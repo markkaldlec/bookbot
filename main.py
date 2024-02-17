@@ -10,6 +10,7 @@ def main():
     list_of_dic = sort_letters(letters)
     print(f'File contains {word_count} words. \n')
     print_list_of_dict(list_of_dic)
+ 
 
 
 def count_words(str):
@@ -33,17 +34,17 @@ def letter_count(str):
     return letters
 
 def sort_on(dict):
-    return dict['num']
+    return dict["count"]
 
 def sort_letters(dic):
     list_of_dict = []
     for entry in dic:
-        list_of_dict.append({entry: dic[entry]})
+        list_of_dict.append({"character": entry, "count": dic[entry] })
+    list_of_dict.sort(reverse=True, key=sort_on)
     return list_of_dict
 
 def print_list_of_dict(list):
     for dict in list:
-        for entry in dict: 
-            print(f'Letter: {entry} was found {dict[entry]} times.')
+        print(f'Letter: {dict['character']} was found {dict['count']} times.')
 
 main()
